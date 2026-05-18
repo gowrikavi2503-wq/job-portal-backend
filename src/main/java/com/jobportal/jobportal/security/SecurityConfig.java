@@ -21,7 +21,9 @@ public class SecurityConfig {
                                 "/api/users/register",
                                 "/api/users/login",
                                 "/api/jobs/add",
-                                "/api/jobs"
+                                "/api/jobs",
+                                "/api/jobs/update/**",
+                                "/api/jobs/delete/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

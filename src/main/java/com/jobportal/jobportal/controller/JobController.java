@@ -24,4 +24,15 @@ public class JobController {
 
         return jobService.getAllJobs();
     }
+    @PutMapping("/update/{id}")
+    public String updateJob(@PathVariable Long id,
+                            @RequestBody Job job) {
+
+        return jobService.updateJob(id, job);
+    }
+    @DeleteMapping("/delete/{id}")
+    public String deleteJob(@PathVariable Long id) {
+        jobService.deleteJob(id);
+        return "Job Deleted Successfully";
+    }
 }

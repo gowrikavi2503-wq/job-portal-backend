@@ -22,4 +22,25 @@ public class JobService {
 
         return jobRepository.findAll();
     }
+    public String updateJob(Long id, Job updatedJob) {
+
+        Job job = jobRepository.findById(id).orElse(null);
+
+        if(job == null) {
+            return "Job Not Found";
+        }
+
+        job.setTitle(updatedJob.getTitle());
+        job.setCompanyName(updatedJob.getCompanyName());
+        job.setLocation(updatedJob.getLocation());
+        job.setSalary(updatedJob.getSalary());
+        job.setDescription(updatedJob.getDescription());
+
+        jobRepository.save(job);
+
+        return "Job Updated Successfully";
+    }
+    public void deleteJob(Long id) {
+        jobRepository.deleteById(id);
+    }
 }
